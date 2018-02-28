@@ -26,20 +26,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    camera.cpp \
     drawwidget.cpp \
-    screen.cpp \
-    ndc.cpp \
-    raster.cpp
+    cameraspace.cpp \
+    ndcspace.cpp \
+    screenspace.cpp \
+    projector.cpp \
+    rasterspace.cpp \
+    cameraspace.cpp \
+    ndcspace.cpp \
+    rasterspace.cpp \
+    screenspace.cpp
 
 HEADERS += \
         mainwindow.h \
-    camera.h \
     drawwidget.h \
-    screen.h \
-    ndc.h \
     primitive.h \
-    raster.h
+    ndcspace.h \
+    screenspace.h \
+    rasterspace.h \
+    projector.h \
+    cameraspace.h \
+    ndcspace.h \
+    rasterspace.h \
+    screenspace.h
 
 FORMS += \
         mainwindow.ui
