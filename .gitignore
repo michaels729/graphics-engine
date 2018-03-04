@@ -5,3 +5,4 @@ release
 *.vcxproj
 *.vcxproj.filters
 *.sln
+*.pro.user
