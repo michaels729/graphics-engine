@@ -1,0 +1,7 @@
+debug
+release
+*.swp
+.qmake.stash
+*.vcxproj
+*.vcxproj.filters
+*.sln
