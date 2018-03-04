@@ -1,7 +1,7 @@
 #include "screenspace.h"
 
-ScreenSpace::ScreenSpace(float near, float far)
-  : near(near), far(far)
+ScreenSpace::ScreenSpace(float near)
+  : near(near)
 {
 
 }

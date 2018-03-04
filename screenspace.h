@@ -6,13 +6,12 @@
 class ScreenSpace
 {
 public:
-    ScreenSpace(float near, float far);
-    ~ScreenSpace();
+    ScreenSpace(float near);
 
     glm::vec2 getCoordinates(const glm::vec3 &cameraSpaceCoordinates) const;
 
 private:
-    float near, far;
+    float near;
 };
 
 #endif // SCREENSPACE_H
