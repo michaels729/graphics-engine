@@ -6,9 +6,9 @@ NDCSpace::NDCSpace(int l, int r, int t, int b)
 
 }
 
-glm::vec2 NDCSpace::getCoordinates(const glm::vec2 &screenSpaceCoordinates)
+glm::vec2 NDCSpace::getCoordinates(const glm::vec2 &screenSpaceCoordinates) const
 {
-    return vec2(
+    return glm::vec2(
        2 * screenSpaceCoordinates.x - r - l / (r - l),
        2 * screenSpaceCoordinates.y - t - b / (t - b)
     );

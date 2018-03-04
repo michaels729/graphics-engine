@@ -9,7 +9,7 @@ public:
     ScreenSpace(float near, float far);
     ~ScreenSpace();
 
-    glm::vec2 getCoordinates(const glm::vec3 &cameraSpaceCoordinates);
+    glm::vec2 getCoordinates(const glm::vec3 &cameraSpaceCoordinates) const;
 
 private:
     float near, far;

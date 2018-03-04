@@ -9,7 +9,7 @@ class RasterSpace
 public:
     RasterSpace(int imageWidth, int imageHeight);
 
-    glm::vec3 getCoordinates(const glm::vec3 &ndcSpaceCoordinates, const float zCoord);
+    glm::vec3 getCoordinates(const glm::vec2 &ndcSpaceCoordinates, const float zCoord) const;
 
 private:
     int imageWidth, imageHeight;

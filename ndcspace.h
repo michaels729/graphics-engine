@@ -8,7 +8,7 @@ class NDCSpace
 public:
     NDCSpace(int l, int r, int t, int b);
 
-    glm::vec2 getCoordinates(const glm::vec2 &screenSpaceCoordinates);
+    glm::vec2 getCoordinates(const glm::vec2 &screenSpaceCoordinates) const;
 
 private:
     int l, r, t, b;
