@@ -1,9 +1,11 @@
 #include "drawwidget.h"
 #include "primitive.h"
+#include "projector.h"
 #include <QPainter>
 #include <glm/glm.hpp>
 
-DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent)
+DrawWidget::DrawWidget(const Projector &projector, QWidget *parent)
+    : projector(projector), QWidget(parent)
 {
 
 }
@@ -19,11 +21,8 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter;
     for (Primitive *obj : objects) {
-        for (vec2 coord : obj->getPixelCoordinates()) {
-            painter.drawPoint(
-                (coord.x + 1) / 2 * this->width(),
-                (1 - coord.y) / 2 * this->height()
-            );
+        for (const glm::vec2 &p : projector.project(*obj)) {
+            painter.drawPoint(p.x, p.y);
         }
     }
 }

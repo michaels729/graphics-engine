@@ -3,7 +3,8 @@
 
 #include <QWidget>
 #include <vector>
-#include <primitive.h>
+#include "projector.h"
+#include "primitive.h"
 
 using std::vector;
 
@@ -11,7 +12,7 @@ class DrawWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DrawWidget(QWidget *parent = nullptr);
+    explicit DrawWidget(const Projector &projector, QWidget *parent = nullptr);
     ~DrawWidget();
     void paintEvent(QPaintEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
@@ -23,6 +24,7 @@ public slots:
 
 private:
     vector<Primitive*> objects;
+    const Projector &projector;
 };
 
 #endif // DRAWWIDGET_H

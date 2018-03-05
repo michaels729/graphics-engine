@@ -4,7 +4,7 @@
 class Primitive
 {
 public:
-    virtual vector<vec2> getPixelCoordinates() = 0;
+    virtual std::vector<glm::vec3> getVertices() const = 0;
 };
 
 #endif // PRIMITIVE_H
