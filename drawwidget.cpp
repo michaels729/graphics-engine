@@ -1,6 +1,7 @@
 #include "drawwidget.h"
 #include "primitive.h"
 #include "projector.h"
+#include "qpainterfilm.h"
 #include <QPainter>
 #include <glm/glm.hpp>
 
@@ -20,10 +21,10 @@ DrawWidget::~DrawWidget()
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter;
+    QPen pen;
+    QPainterFilm film(painter, pen);
     for (Primitive *obj : objects) {
-        for (const glm::vec2 &p : projector.project(*obj)) {
-            painter.drawPoint(p.x, p.y);
-        }
+        projector.project(*obj, film);
     }
 }
 

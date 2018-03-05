@@ -47,7 +47,7 @@ float areaTriangle2D(const glm::vec3 &v0, const glm::vec3 &v1, const glm::vec3 &
     @return true if the target point p is to the left of the vector v1 - v0,
             else false
 */
-bool edgeFunction(const glm::vec3 &v0, const glm::vec3 &v1, const glm::vec3 &p)
+float edgeFunction(const glm::vec3 &v0, const glm::vec3 &v1, const glm::vec3 &p)
 {
-    return areaParallelogram2D(v0, v1, p) >= 0.0f;
+    return areaParallelogram2D(v0, v1, p);
 }
