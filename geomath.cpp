@@ -49,5 +49,5 @@ float areaTriangle2D(const glm::vec3 &v0, const glm::vec3 &v1, const glm::vec3 &
 */
 bool edgeFunction(const glm::vec3 &v0, const glm::vec3 &v1, const glm::vec3 &p)
 {
-    return -areaParallelogram2D(v0, v1, p) >= 0.0f;
+    return areaParallelogram2D(v0, v1, p) >= 0.0f;
 }
