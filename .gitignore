@@ -4,5 +4,7 @@ release
 .qmake.stash
 *.vcxproj
 *.vcxproj.filters
+*.VC.db
+*.VC.opendb
 *.sln
 *.pro.user

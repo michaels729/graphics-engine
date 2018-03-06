@@ -22,7 +22,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter;
     QPen pen;
-    QPainterFilm film(painter, pen);
+    QPainterFilm film(painter, pen, this->width, this->height);
     for (Primitive *obj : objects) {
         projector.project(*obj, film);
     }

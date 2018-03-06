@@ -42,6 +42,8 @@ std::vector<glm::vec3> Projector::project(Primitive &primitive, Film &film) cons
                 float w2 = edgeFunction(v0Raster, v1Raster, pixel);
 
                 if (w0 >= 0.0f && w1 >= 0.0f && w2 >= 0.0f) {
+                    float z = 1 / ((1 / v0Raster.z) * w0 + (1 / v1Raster.z) * w1 + (1 / v2Raster.z) * w2);
+
                     float lambda0 = w0 / area;
                     float lambda1 = w1 / area;
                     float lambda2 = w2 / area;
@@ -50,7 +52,7 @@ std::vector<glm::vec3> Projector::project(Primitive &primitive, Film &film) cons
                     float g = lambda0 * c0.g + lambda1 * c1.g + lambda2 * c2.g;
                     float b = lambda0 * c0.b + lambda1 * c1.b + lambda2 * c2.b;
 
-                    film.write(x, y, r, g, b);
+                    film.write(x, y, z, r, g, b);
                 }
             }
         }
