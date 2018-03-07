@@ -19,14 +19,15 @@ public:
     ~FileUploadWidget();
 
 signals:
+    void fileSelected(std::shared_ptr<QFile> file);
 
-public slots :
+public slots:
     void select();
 
 private:
     std::unique_ptr<QPushButton> browseButton;
     std::unique_ptr<QLineEdit> fileNameBox;
-    std::unique_ptr<QFile> file;
+    std::shared_ptr<QFile> file;
 };
 
 #endif // FILEUPLOADWIDGET_H

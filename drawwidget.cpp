@@ -13,9 +13,6 @@ DrawWidget::DrawWidget(const Projector &proj, QWidget *parent)
 
 DrawWidget::~DrawWidget()
 {
-    for (Primitive *obj : objects) {
-        delete obj;
-    }
 }
 
 void DrawWidget::paintEvent(QPaintEvent *event)
@@ -23,7 +20,11 @@ void DrawWidget::paintEvent(QPaintEvent *event)
     QPainter painter;
     QPen pen;
     QPainterFilm film(painter, pen, this->width(), this->height());
-    for (Primitive *obj : objects) {
+    for (std::unique_ptr<Primitive> &obj : objects) {
         projector.project(*obj, film);
     }
+}
+
+void DrawWidget::readFile(std::shared_ptr<QFile> file) {
+    // TODO
 }

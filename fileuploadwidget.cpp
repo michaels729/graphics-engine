@@ -28,6 +28,10 @@ FileUploadWidget::~FileUploadWidget()
 {
 }
 
+void FileUploadWidget::fileSelected(std::shared_ptr<QFile> file) {
+    // TODO
+}
+
 void FileUploadWidget::select()
 {
     QString fileName = (QFileDialog::getOpenFileName(this, tr("Open File"),
@@ -35,4 +39,5 @@ void FileUploadWidget::select()
         tr("geometry (*.obj)")));
     file.reset(new QFile(fileName));
     fileNameBox->insert(fileName);
+    emit fileSelected(file);
 }

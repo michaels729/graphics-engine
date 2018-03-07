@@ -44,5 +44,7 @@ int main(int argc, char *argv[])
     FileUploadWidget uploadWidget;
     w.setMenuWidget(&uploadWidget);
 
+    QObject::connect(&uploadWidget, SIGNAL(fileSelected(QFile)), &dw, SLOT(readFile(QFile)));
+
     return a.exec();
 }

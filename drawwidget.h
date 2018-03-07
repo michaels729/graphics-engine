@@ -2,7 +2,9 @@
 #define DRAWWIDGET_H
 
 #include <QWidget>
+#include <QFile>
 #include <vector>
+#include <memory>
 #include "projector.h"
 #include "primitive.h"
 
@@ -16,12 +18,11 @@ public:
     ~DrawWidget();
     void paintEvent(QPaintEvent *event) override;
 
-signals:
-
 public slots:
+    void readFile(std::shared_ptr<QFile> file);
 
 private:
-    vector<Primitive*> objects;
+    vector<std::unique_ptr<Primitive>> objects;
     const Projector &projector;
 };
 
