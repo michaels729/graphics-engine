@@ -17,7 +17,7 @@ public:
     Projector(const CameraSpace &cameraSpace, const ScreenSpace &screenSpace,
               const NDCSpace &ndcSpace, const RasterSpace &rasterSpace);
 
-    std::vector<glm::vec3> project(Primitive &object, Film &film) const;
+    void project(Primitive &primitive, Film &film) const;
 
 private:
     const CameraSpace &cameraSpace;
@@ -25,7 +25,7 @@ private:
     const NDCSpace &ndcSpace;
     const RasterSpace &rasterSpace;
 
-    glm::vec3 Projector::convertToRaster(const glm::vec3 &worldCoordinates) const;
+    glm::vec3 convertToRaster(const glm::vec3 &worldCoordinates) const;
 };
 
 #endif // PROJECTOR_H

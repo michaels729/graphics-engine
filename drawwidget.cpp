@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <glm/glm.hpp>
 
-DrawWidget::DrawWidget(const Projector &projector, QWidget *parent)
+DrawWidget::DrawWidget(const Projector &proj, QWidget *parent)
     : projector(projector), QWidget(parent)
 {
 
@@ -22,19 +22,8 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter;
     QPen pen;
-    QPainterFilm film(painter, pen, this->width, this->height);
+    QPainterFilm film(painter, pen, this->width(), this->height());
     for (Primitive *obj : objects) {
         projector.project(*obj, film);
     }
 }
-
-void DrawWidget::keyPressEvent(QKeyEvent *event)
-{
-
-}
-
-void DrawWidget::mousePressEvent(QMouseEvent *event)
-{
-
-}
-

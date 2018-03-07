@@ -9,10 +9,8 @@ Projector::Projector(const CameraSpace &cameraSpace, const ScreenSpace &screenSp
 
 }
 
-std::vector<glm::vec3> Projector::project(Primitive &primitive, Film &film) const
+void Projector::project(Primitive &primitive, Film &film) const
 {
-    std::vector<glm::vec3> rasterPixels;
-
     std::vector<glm::vec3> objectVertices = primitive.getVertices();
     std::vector<glm::vec3> objectColors = primitive.getColors();
     for (int i = 0; i < objectVertices.size(); i += 3) {
@@ -24,10 +22,10 @@ std::vector<glm::vec3> Projector::project(Primitive &primitive, Film &film) cons
         const glm::vec3 v1Raster = convertToRaster(v1);
         const glm::vec3 v2Raster = convertToRaster(v2);
 
-        float xMinRaster = std::min(v0Raster.x, v1Raster.x, v2Raster.x);
-        float yMinRaster = std::min(v0Raster.y, v1Raster.y, v2Raster.y);
-        float xMaxRaster = std::max(v0Raster.x, v1Raster.x, v2Raster.x);
-        float yMaxRaster = std::max(v0Raster.y, v1Raster.y, v2Raster.y);
+        float xMinRaster = std::min(v0Raster.x, std::min(v1Raster.x, v2Raster.x));
+        float yMinRaster = std::min(v0Raster.y, std::min(v1Raster.y, v2Raster.y));
+        float xMaxRaster = std::max(v0Raster.x, std::max(v1Raster.x, v2Raster.x));
+        float yMaxRaster = std::max(v0Raster.y, std::max(v1Raster.y, v2Raster.y));
 
         const glm::vec3 &c0 = objectColors[i];
         const glm::vec3 &c1 = objectColors[i+1];
@@ -57,7 +55,6 @@ std::vector<glm::vec3> Projector::project(Primitive &primitive, Film &film) cons
             }
         }
     }
-    return rasterPixels;
 }
 
 glm::vec3 Projector::convertToRaster(const glm::vec3 &worldCoordinates) const {

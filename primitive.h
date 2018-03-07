@@ -1,6 +1,9 @@
 #ifndef PRIMITIVE_H
 #define PRIMITIVE_H
 
+#include <vector>
+#include <glm/glm.hpp>
+
 class Primitive
 {
 public:
