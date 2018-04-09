@@ -2,9 +2,12 @@
 #include "geomath.h"
 #include <algorithm>
 
-Projector::Projector(const CameraSpace &cameraSpace, const ScreenSpace &screenSpace,
-                     const NDCSpace &ndcSpace, const RasterSpace &rasterSpace)
-    : cameraSpace(cameraSpace), screenSpace(screenSpace), ndcSpace(ndcSpace), rasterSpace(rasterSpace)
+Projector::Projector(std::unique_ptr<const CameraSpace> cameraSpace,
+        std::unique_ptr<const ScreenSpace> screenSpace,
+        std::unique_ptr<const NDCSpace> ndcSpace,
+        std::unique_ptr<const RasterSpace> rasterSpace)
+    : cameraSpace(std::move(cameraSpace)), screenSpace(std::move(screenSpace)),
+        ndcSpace(std::move(ndcSpace)), rasterSpace(std::move(rasterSpace))
 {
 
 }
@@ -58,8 +61,8 @@ void Projector::project(Primitive &primitive, Film &film) const
 }
 
 glm::vec3 Projector::convertToRaster(const glm::vec3 &worldCoordinates) const {
-    glm::vec3 cameraSpaceCoords = cameraSpace.getCoordinates(worldCoordinates);
-    glm::vec2 screenSpaceCoords = screenSpace.getCoordinates(cameraSpaceCoords);
-    glm::vec2 ndcSpaceCoords = ndcSpace.getCoordinates(screenSpaceCoords);
-    return rasterSpace.getCoordinates(ndcSpaceCoords, cameraSpaceCoords.z);
+    glm::vec3 cameraSpaceCoords = cameraSpace->getCoordinates(worldCoordinates);
+    glm::vec2 screenSpaceCoords = screenSpace->getCoordinates(cameraSpaceCoords);
+    glm::vec2 ndcSpaceCoords = ndcSpace->getCoordinates(screenSpaceCoords);
+    return rasterSpace->getCoordinates(ndcSpaceCoords, cameraSpaceCoords.z);
 }

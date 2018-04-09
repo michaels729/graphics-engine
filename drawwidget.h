@@ -14,7 +14,7 @@ class DrawWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DrawWidget(const Projector &projector, QWidget *parent = nullptr);
+    explicit DrawWidget(std::unique_ptr<Projector> projector, QWidget *parent = nullptr);
     ~DrawWidget();
     void paintEvent(QPaintEvent *event) override;
 
@@ -25,7 +25,7 @@ private:
     vector<glm::vec3> vertices;
     vector<glm::vec3> st;
     vector<std::unique_ptr<Primitive>> objects;
-    const Projector &projector;
+    std::shared_ptr<Projector> projector;
 };
 
 #endif // DRAWWIDGET_H

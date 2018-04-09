@@ -30,13 +30,14 @@ int main(int argc, char *argv[])
     // TODO: Properly calculate ndc t, b, l, r values u
     int l = 0, r = 200, t = 0, b = 200;
 
-    const CameraSpace cameraSpace(view);
-    const ScreenSpace screenSpace(nearClippingPlane);
-    const NDCSpace ndcSpace(l, r, t, b);
-    const RasterSpace rasterSpace(width, height);
-    Projector projector(cameraSpace, screenSpace, ndcSpace, rasterSpace);
+    std::unique_ptr<const CameraSpace> cameraSpace = std::make_unique<const CameraSpace>(view);
+    std::unique_ptr<const ScreenSpace> screenSpace = std::make_unique<const ScreenSpace>(nearClippingPlane);
+    std::unique_ptr<const NDCSpace> ndcSpace = std::make_unique<const NDCSpace>(l, r, t, b);
+    std::unique_ptr<const RasterSpace> rasterSpace = std::make_unique<const RasterSpace>(width, height);
+    std::unique_ptr<Projector> projector = std::make_unique<Projector>(
+            std::move(cameraSpace), std::move(screenSpace), std::move(ndcSpace), std::move(rasterSpace));
 
-    DrawWidget dw(projector, &w);
+    DrawWidget dw(std::move(projector), &w);
     dw.setFocusPolicy(Qt::StrongFocus);
     dw.resize(width, height);
     w.setCentralWidget(&dw);
