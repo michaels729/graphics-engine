@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
     MainWindow w;
     w.show();
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     FileUploadWidget uploadWidget;
     w.setMenuWidget(&uploadWidget);
 
-    QObject::connect(&uploadWidget, SIGNAL(fileSelected(QFile)), &dw, SLOT(readFile(QFile)));
+    QObject::connect(&uploadWidget, SIGNAL(fileSelected(std::shared_ptr<QFile>)), &dw, SLOT(readFile(std::shared_ptr<QFile>)));
 
-    return a.exec();
+    return app.exec();
 }

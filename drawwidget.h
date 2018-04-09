@@ -22,6 +22,8 @@ public slots:
     void readFile(std::shared_ptr<QFile> file);
 
 private:
+    vector<glm::vec3> vertices;
+    vector<glm::vec3> st;
     vector<std::unique_ptr<Primitive>> objects;
     const Projector &projector;
 };

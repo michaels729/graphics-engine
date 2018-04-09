@@ -28,10 +28,6 @@ FileUploadWidget::~FileUploadWidget()
 {
 }
 
-void FileUploadWidget::fileSelected(std::shared_ptr<QFile> file) {
-    // TODO
-}
-
 void FileUploadWidget::select()
 {
     QString fileName = (QFileDialog::getOpenFileName(this, tr("Open File"),
