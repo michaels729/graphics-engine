@@ -4,7 +4,7 @@
 class Film
 {
 public:
-    virtual void write(int xPos, int yPos, int zDepth, int r, int g, int b) = 0;
+    virtual void write(uint32_t xPos, uint32_t yPos, float zDepth, float r, float g, float b) = 0;
 };
 
 #endif // FILM_H

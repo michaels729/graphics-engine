@@ -11,6 +11,10 @@ public:
 
     glm::vec3 getCoordinates(const glm::vec2 &ndcSpaceCoordinates, const float zCoord) const;
 
+    int getImageWidth() const;
+
+    int getImageHeight() const;
+
 private:
     int imageWidth, imageHeight;
 };

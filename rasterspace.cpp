@@ -14,3 +14,13 @@ glm::vec3 RasterSpace::getCoordinates(const glm::vec2 &ndcSpaceCoordinates, cons
         -zCoord // Negate so we can compare as a positive depth values.
     );
 }
+
+int RasterSpace::getImageWidth() const
+{
+    return imageWidth;
+}
+
+int RasterSpace::getImageHeight() const
+{
+    return imageHeight;
+}

@@ -16,17 +16,17 @@ Triangle::~Triangle()
 std::vector<glm::vec3> Triangle::getVertices() const
 {
     std::vector<glm::vec3> vertices(3);
-    vertices.push_back(v0);
-    vertices.push_back(v1);
-    vertices.push_back(v2);
+    vertices[0] = v0;
+    vertices[1] = v1;
+    vertices[2] = v2;
     return vertices;
 }
 
 std::vector<glm::vec3> Triangle::getColors() const
 {
     std::vector<glm::vec3> colors(3);
-    colors.push_back(c0);
-    colors.push_back(c1);
-    colors.push_back(c2);
+    colors[0] = c0;
+    colors[1] = c1;
+    colors[2] = c2;
     return colors;
 }

@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
     float filmApertureWidth = 0.980;
     float filmApertureHeight = 0.735;
 
-    const unsigned int width = 640;
-    const unsigned int height = 480;
+    const uint32_t width = 640;
+    const uint32_t height = 480;
     glm::mat4 view(
         0.707107, -0.331295, 0.624695, 0,
         0, 0.883452, 0.468521, 0,
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         -1.63871, -5.747777, -40.400412, 1);
 
     // TODO: Properly calculate ndc t, b, l, r values u
-    int l = 0, r = 200, t = 0, b = 200;
+    int l = 0, r = 640, t = 0, b = 480;
 
     std::unique_ptr<const CameraSpace> cameraSpace = std::make_unique<const CameraSpace>(view);
     std::unique_ptr<const ScreenSpace> screenSpace = std::make_unique<const ScreenSpace>(nearClippingPlane);
