@@ -16,7 +16,7 @@ FileUploadWidget::FileUploadWidget(QWidget *parent)
     fileNameBox.reset(new QLineEdit());
     fileNameBox->setReadOnly(true);
 
-    QGridLayout *mainLayout = new QGridLayout(this);
+    mainLayout.reset(new QGridLayout(this));
     mainLayout->addWidget(browseButton.get(), 0, 0);
     mainLayout->addWidget(fileNameBox.get(), 0, 1, 1, 2);
 

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QComboBox>
+#include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QTableWidget>
@@ -28,6 +29,7 @@ private:
     std::unique_ptr<QPushButton> browseButton;
     std::unique_ptr<QLineEdit> fileNameBox;
     std::shared_ptr<QFile> file;
+    std::unique_ptr<QGridLayout> mainLayout;
 };
 
 #endif // FILEUPLOADWIDGET_H
