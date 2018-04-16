@@ -8,7 +8,7 @@ class QPainterFilm :
     public Film
 {
 public:
-    QPainterFilm(QPainter &qPainter, uint32_t width, uint32_t height);
+    QPainterFilm(QPainter &qPainter, uint32_t width, uint32_t height, const float far);
     void write(uint32_t xPos, uint32_t yPos, float zDepth, float r, float g, float b) override;
 
 private:

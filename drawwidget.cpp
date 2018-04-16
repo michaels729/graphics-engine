@@ -10,8 +10,8 @@
 
 #include "test/cow.h"
 
-DrawWidget::DrawWidget(std::unique_ptr<Projector> projector, QWidget *parent)
-    : projector(std::move(projector)), QWidget(parent)
+DrawWidget::DrawWidget(std::unique_ptr<Projector> projector, const float far, QWidget *parent)
+    : projector(std::move(projector)), far(far), QWidget(parent)
 {
 
 }
@@ -23,7 +23,7 @@ DrawWidget::~DrawWidget()
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    QPainterFilm film(painter, this->width(), this->height());
+    QPainterFilm film(painter, this->width(), this->height(), far);
     for (std::unique_ptr<Primitive> &obj : objects) {
         projector->project(*obj, film);
     }

@@ -6,12 +6,12 @@
 class NDCSpace
 {
 public:
-    NDCSpace(int l, int r, int t, int b);
+    NDCSpace(float l, float r, float t, float b);
 
     glm::vec2 getCoordinates(const glm::vec2 &screenSpaceCoordinates) const;
 
 private:
-    int l, r, t, b;
+    float l, r, t, b;
 };
 
 #endif // NDCSPACE_H

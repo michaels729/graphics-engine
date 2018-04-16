@@ -1,6 +1,6 @@
 #include "ndcspace.h"
 
-NDCSpace::NDCSpace(int l, int r, int t, int b)
+NDCSpace::NDCSpace(float l, float r, float t, float b)
     : l(l), r(r), t(t), b(b)
 {
 

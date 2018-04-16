@@ -1,7 +1,7 @@
 #include "QPainterFilm.h"
 
-QPainterFilm::QPainterFilm(QPainter &qPainter, uint32_t width, uint32_t height)
-    : qPainter(qPainter), width(width), height(height), depthBuffer(width * height, std::numeric_limits<float>::infinity())
+QPainterFilm::QPainterFilm(QPainter &qPainter, uint32_t width, uint32_t height, const float far)
+    : qPainter(qPainter), width(width), height(height), depthBuffer(width * height, far)
 {
 
 }

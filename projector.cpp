@@ -63,8 +63,8 @@ void Projector::project(Primitive &primitive, Film &film) const
                     float g = lambda0 * c0.g + lambda1 * c1.g + lambda2 * c2.g;
                     float b = lambda0 * c0.b + lambda1 * c1.b + lambda2 * c2.b;
 
-                    film.write(x, y, z, 0.0f, 1.0f, 0.0f);
-                    //film.write(x, y, z, r, g, b);
+                    //film.write(x, y, z, 0.0f, 1.0f, 0.0f);
+                    film.write(x, y, z, r, g, b);
                 }
             }
         }
