@@ -17,10 +17,12 @@ class FileUploadWidget : public QWidget
 public:
     explicit FileUploadWidget(QWidget *parent = nullptr);
     ~FileUploadWidget();
-    void select();
 
 signals:
     void fileSelected(std::shared_ptr<QFile> file);
+
+public slots:
+    void select();
 
 private:
     std::unique_ptr<QPushButton> browseButton;
