@@ -22,9 +22,8 @@ DrawWidget::~DrawWidget()
 
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
-    QPainter painter;
-    QPen pen;
-    QPainterFilm film(painter, pen, this->width(), this->height());
+    QPainter painter(this);
+    QPainterFilm film(painter, this->width(), this->height());
     for (std::unique_ptr<Primitive> &obj : objects) {
         projector->project(*obj, film);
     }
