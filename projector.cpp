@@ -30,9 +30,13 @@ void Projector::project(Primitive &primitive, Film &film) const
         float xMaxRaster = std::max(v0Raster.x, std::max(v1Raster.x, v2Raster.x));
         float yMaxRaster = std::max(v0Raster.y, std::max(v1Raster.y, v2Raster.y));
 
-        const glm::vec3 &c0 = objectColors[i];
-        const glm::vec3 &c1 = objectColors[i+1];
-        const glm::vec3 &c2 = objectColors[i+2];
+        //const glm::vec3 &c0 = objectColors[i];
+        //const glm::vec3 &c1 = objectColors[i+1];
+        //const glm::vec3 &c2 = objectColors[i+2];
+
+        const glm::vec3 c0(1.0f, 0.0f, 0.0f);
+        const glm::vec3 c1(0.0f, 1.0f, 0.0f);
+        const glm::vec3 c2(0.0f, 0.0f, 1.0f);
 
         if (xMinRaster > rasterSpace->getImageWidth() - 1 || xMaxRaster < 0 ||
                 yMinRaster > rasterSpace->getImageHeight() - 1 || yMaxRaster < 0) {
@@ -44,7 +48,7 @@ void Projector::project(Primitive &primitive, Film &film) const
         uint32_t yStart = std::max((int32_t)0, (int32_t)(std::floor(yMinRaster)));
         uint32_t yEnd = std::min((int32_t)rasterSpace->getImageHeight() - 1, (int32_t)std::floor(yMaxRaster));
 
-        float area = edgeFunction(v0, v1, v2);
+        float area = edgeFunction(v0Raster, v1Raster, v2Raster);
         for (uint32_t x = xStart; x <= xEnd; ++x) {
             for (uint32_t y = yStart; y <= yEnd; ++y) {
                 glm::vec3 pixel(x + 0.5f, y + 0.5f, 0.0f);
@@ -63,7 +67,6 @@ void Projector::project(Primitive &primitive, Film &film) const
                     float g = lambda0 * c0.g + lambda1 * c1.g + lambda2 * c2.g;
                     float b = lambda0 * c0.b + lambda1 * c1.b + lambda2 * c2.b;
 
-                    //film.write(x, y, z, 0.0f, 1.0f, 0.0f);
                     film.write(x, y, z, r, g, b);
                 }
             }
