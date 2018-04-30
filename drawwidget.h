@@ -10,6 +10,10 @@
 
 using std::vector;
 
+namespace Ui {
+    class DrawWidget;
+}
+
 class DrawWidget : public QWidget
 {
     Q_OBJECT
@@ -22,6 +26,8 @@ public slots:
     void readFile(std::shared_ptr<QFile> file);
 
 private:
+    Ui::DrawWidget *ui;
+
     vector<glm::vec3> vertices;
     vector<glm::vec3> st;
     vector<std::unique_ptr<Primitive>> objects;

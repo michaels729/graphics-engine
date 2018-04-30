@@ -11,6 +11,10 @@
 
 #include <memory>
 
+namespace Ui {
+    class FileUploadWidget;
+}
+
 class FileUploadWidget : public QWidget
 {
     Q_OBJECT
@@ -26,6 +30,7 @@ public slots:
     void select();
 
 private:
+    Ui::FileUploadWidget *ui;
     std::unique_ptr<QPushButton> browseButton;
     std::unique_ptr<QLineEdit> fileNameBox;
     std::shared_ptr<QFile> file;

@@ -26,7 +26,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    drawwidget.cpp \
+        fileuploadwidget.cpp \
+        drawwidget.cpp \
     cameraspace.cpp \
     ndcspace.cpp \
     screenspace.cpp \
@@ -39,7 +40,8 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    drawwidget.h \
+        fileuploadwidget.h \
+        drawwidget.h \
     primitive.h \
     ndcspace.h \
     screenspace.h \
@@ -51,6 +53,8 @@ HEADERS += \
     screenspace.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+        fileuploadwidget.ui \
+        drawwidget.ui
 
 INCLUDEPATH += $$PWD/include

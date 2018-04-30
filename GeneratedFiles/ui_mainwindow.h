@@ -15,40 +15,46 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
+#include "drawwidget.h"
+#include "fileuploadwidget.h"
 
 QT_BEGIN_NAMESPACE
 
 class Ui_MainWindow
 {
 public:
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QWidget *centralWidget;
+    FileUploadWidget *fileUploadWidget;
+    DrawWidget *drawWidget;
+    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(mainToolBar);
+        MainWindow->resize(395, 274);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        fileUploadWidget = new FileUploadWidget(centralWidget);
+        fileUploadWidget->setObjectName(QStringLiteral("fileUploadWidget"));
+        fileUploadWidget->setGeometry(QRect(0, 0, 391, 41));
+        drawWidget = new DrawWidget(centralWidget);
+        drawWidget->setObjectName(QStringLiteral("drawWidget"));
+        drawWidget->setGeometry(QRect(0, 40, 391, 201));
         MainWindow->setCentralWidget(centralWidget);
+        mainToolBar = new QToolBar(MainWindow);
+        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
+        QObject::connect(fileUploadWidget, SIGNAL(fileSelected(std::shared_ptr)), drawWidget, SLOT(readFile(std::shared_ptr)));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
