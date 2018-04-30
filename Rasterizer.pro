@@ -24,33 +24,42 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     drawwidget.cpp \
+    fileuploadwidget.cpp \
+    geomath.cpp \
     cameraspace.cpp \
     ndcspace.cpp \
     screenspace.cpp \
     projector.cpp \
+    qpainterfilm.cpp \
     rasterspace.cpp \
     cameraspace.cpp \
     ndcspace.cpp \
     rasterspace.cpp \
-    screenspace.cpp
+    screenspace.cpp \
+    triangle.h
 
 HEADERS += \
-        mainwindow.h \
+    mainwindow.h \
     drawwidget.h \
+    fileuploadwidget.h \
+    film.h \
+    geomath.h \
     primitive.h \
     ndcspace.h \
     screenspace.h \
     rasterspace.h \
     projector.h \
+    qpainterfilm.h \
     cameraspace.h \
     ndcspace.h \
     rasterspace.h \
-    screenspace.h
+    screenspace.h \
+    triangle.h
 
 FORMS += \
-        mainwindow.ui
+    mainwindow.ui
 
 INCLUDEPATH += $$PWD/include
