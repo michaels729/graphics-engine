@@ -39,7 +39,7 @@ SOURCES += \
     ndcspace.cpp \
     rasterspace.cpp \
     screenspace.cpp \
-    triangle.h
+    triangle.cpp
 
 HEADERS += \
     mainwindow.h \
